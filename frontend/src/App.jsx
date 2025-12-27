@@ -1,29 +1,29 @@
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react';
 import './App.css'
+import Navbar from './components/Navbar';
+import Login from './pages/Login';
+import PostJob from './pages/PostJob_Form';
+import Register from './pages/Register';
+import { Route, Routes } from 'react-router-dom';
+import Home from './pages/Home'
+
 
 function App() {
-  const [data, setData] = useState('');
 
-  useEffect(() => {
-      const fetchedData = async () => {
-      try {
-        const response = await fetch('http://localhost:5001/api/data'); 
-        const data = await response.json(); 
-        setData( data.message);
-      } catch(error) {
-        console.error('Error fetching data:', error) 
-      }
-    }
-    fetchedData();
-    console.log('Data from backend :', data)
-  }, [data])
-
+  const [ user, setUser ] = useState(null);
   return (
-    <>
-      <h1>Hello react !</h1>
-      <p>Data from backend : {data}</p>
-    </>
+    <div className='app'>
+      <Navbar user={user}/>
+      <Routes>
+        <Route path='/' element={<Home />}/>
+        <Route path='/login' element={<Login setUser={setUser}/>} />
+        <Route path='/register' element={<Register />} />
+        { user?.role === "admin" && (
+          <Route path='/post-job' element={<PostJob />} />
+        )}
+      </Routes>
+    </div>
   )
 }
 

@@ -1,5 +1,6 @@
 import './index.css'
 import { useState } from "react"
+import API from '../../services/api.js';
 
 function PostJob () {
 
@@ -11,14 +12,21 @@ function PostJob () {
     const [ location, setLocation ] = useState('')
     const [ salary, setSalary ] = useState('')
 
-    const handlePostJob = (e) => {
+    const [ result, setResult ] = useState('')
+
+    const handlePostJob = async (e) => {
         e.preventDefault();
         const jobData = {
             title, company, description, 
             skills: skills.split(',').map(s => s.trim()), 
             location, salary
         }
-        console.log( jobData );
+         try {
+            const res = API.post('/api/jobs',jobData);
+            setResult(res.data.message || "Job Posted successful!");
+        } catch (error) {
+            setResult(error.response?.data?.message || "Job Posting failed");
+        }        
     }
 
     return (
@@ -70,6 +78,7 @@ function PostJob () {
                 />
                 <button type="Submit">Post Job</button>
             </form>
+            { result && <p>{ result }</p> }
         </div>
     )
 }

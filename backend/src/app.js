@@ -13,4 +13,10 @@ app.get('/api/data', (req, res) => {
   res.json({ message:'Hello, Job Portal Backend!'});
 });
 
+import authRoutes from './routes/authRoutes.js';
+app.use('./api/auth', authRoutes);
+
+import jobRoutes from './routes/jobRoutes.js';
+app.use('/api/jobs', jobRoutes);
+
 export default app;

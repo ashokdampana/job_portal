@@ -1,18 +1,24 @@
+import API from '../../services/api';
 import'./index.css'
 import { useState } from "react"
 
 
-function Login ({ setUser }) {
+function Login () {
 
     console.log('Login page');
     const [ email, setEmail ] = useState('')
     const [ password, setPassword ] = useState('')
+    const [ result, setResult ] = useState('');
 
     const handleLogin = (e) => {
         e.preventDefault();
-        console.log( email, password);
-        const fakeUser = { name: "Ashok", role: "normal"};
-        setUser( fakeUser );
+        try {
+            const res = API.post('/api/auth/login', { email, password });
+            setResult(res.data.message || "Login successful!");
+        } catch (error) {
+            setResult(error.response?.data?.message || "Login failed");
+        }
+        
     }
 
     return (
@@ -34,6 +40,7 @@ function Login ({ setUser }) {
                 />
                 <button type="submit">Login</button>
             </form>
+            { result && <p>{ result }</p> }
         </div>
     )
 }

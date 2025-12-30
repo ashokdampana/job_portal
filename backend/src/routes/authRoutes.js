@@ -1,6 +1,6 @@
 
-import { loginValid, registerValid } from '../../validations/authValidation.js';
-import { validationResult } from 'express-validatior';
+import { loginValid, registerValid } from '../validations/authValidation.js';
+import { validationResult } from 'express-validator';
 import User from '../models/User.js';
 import express from 'express';
 import bcrypt from 'bcryptjs';
@@ -10,10 +10,10 @@ const router = express.Router();
 router.post('/register', registerValid, async (req, res) => {
     const errors = validationResult(req);
     if ( ! errors.isEmpty() ) {
-        return res.status(400).json({errors: errors.arrays()})
+        return res.status(400).json({errors: errors.array()})
     }
     const {name, email, password} = req.body;
-    const checkUser = User.find({ email });
+    const checkUser = await User.findOne({ email });
     if ( checkUser) return res.status(400).json({message: "User already exists"});
 
     const newUser = new User({ name, email, password });
@@ -24,7 +24,7 @@ router.post('/register', registerValid, async (req, res) => {
 router.post('/login', loginValid, (req, res) => {
     const errors = validationResult(req);
     if ( ! errors.isEmpty() ) {
-        return res.status(400).json({errors: errors.arrays()})
+        return res.status(400).json({errors: errors.array()})
     }
     const { email, password } = req.body;
     const checkUser = User.find({ email });
@@ -33,3 +33,4 @@ router.post('/login', loginValid, (req, res) => {
 })
 
 export default router;
+

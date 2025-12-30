@@ -1,5 +1,5 @@
 import API from '../../services/api';
-import'./index.css'
+import '../Login/index.css';
 import { useState } from "react"
 
 

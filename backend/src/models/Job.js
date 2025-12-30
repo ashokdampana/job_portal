@@ -9,8 +9,7 @@ const jobSchema = new mongoose.Schema({
   salary: { type: Number, required: true },
   postedBy: {
     type: mongoose.Schema.Types.ObjectId, 
-    ref: "User",                          
-    required: true
+    ref: "User"
   }
 }, { timestamps: true }); // adds createdAt and updatedAt automatically
 

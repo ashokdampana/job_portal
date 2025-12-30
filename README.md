@@ -17,14 +17,20 @@ Login form
 Admin job post form
 Commit : auth and job forms created
 
+
 DAY 3 — FETCH (POST) : Send form data to backend
 
 Register API
 Login API
 Job create API (admin)
 
-Output
-✔ User saved in DB
-✔ Job saved in DB
-
 Commit : api integration for register login and job create
+
+
+DAY 4 — FETCH (GET) : Read data
+
+Get all jobs API
+Job details API
+Show jobs in UI
+
+Commit : job listing and job details fetch

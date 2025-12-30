@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Corporate Communications Agent",
+    "description": "Cicuta vulgaris crustulum tristis inflammatio ab verumtamen.",
+    "skills": [
+      "Ruby",
+      "Java",
+      "Go"
+    ],
+    "company": "Fahey Inc",
+    "location": "Hamilton",
+    "salary": 51743
+  },
+  {
+    "title": "Human Quality Executive",
+    "description": "Despecto beneficium asporto atrocitas ducimus conor blanditiis curvo eum.",
+    "skills": [
+      "Python",
+      "Java",
+      "JavaScript"
+    ],
+    "company": "Turcotte - Cruickshank",
+    "location": "Robertstad",
+    "salary": 121919
+  },
+  {
+    "title": "Senior Implementation Representative",
+    "description": "Capio combibo caveo tego validus thymum tamquam civis causa vinco.",
+    "skills": [
+      "Swift",
+      "Python",
+      "PHP"
+    ],
+    "company": "Weimann - Murazik",
+    "location": "Keyonfield",
+    "salary": 82653
+  },
+  {
+    "title": "Customer Branding Architect",
+    "description": "Voluntarius admiratio aedificium cuius truculenter amplitudo demens coma.",
+    "skills": [
+      "Ruby",
+      "Java",
+      "Go"
+    ],
+    "company": "Beer, Cremin and Wilderman",
+    "location": "Morarstead",
+    "salary": 96059
+  },
+  {
+    "title": "Regional Assurance Associate",
+    "description": "Deinde amo cubitum vigor.",
+    "skills": [
+      "PHP",
+      "Python",
+      "Swift"
+    ],
+    "company": "Runolfsdottir - Schaefer",
+    "location": "Newport News",
+    "salary": 129577
+  },
+  {
+    "title": "Legacy Assurance Analyst",
+    "description": "Doloremque solus verbum apud.",
+    "skills": [
+      "JavaScript",
+      "Ruby",
+      "C#"
+    ],
+    "company": "Braun - Romaguera",
+    "location": "Port Gladycestad",
+    "salary": 114023
+  },
+  {
+    "title": "Global Infrastructure Associate",
+    "description": "Audax atrocitas vindico ocer defaeco adfero atqui spes cotidie.",
+    "skills": [
+      "Ruby",
+      "PHP",
+      "JavaScript"
+    ],
+    "company": "Prosacco - Wisoky",
+    "location": "West Ellsworth",
+    "salary": 85824
+  },
+  {
+    "title": "Forward Communications Consultant",
+    "description": "Sol custodia audax aedificium tempore paens stabilis eveniet usque.",
+    "skills": [
+      "C#",
+      "Swift",
+      "Ruby"
+    ],
+    "company": "Kutch, Reichel and Turcotte",
+    "location": "South Juvenal",
+    "salary": 73774
+  },
+  {
+    "title": "Internal Intranet Engineer",
+    "description": "Ascit aliquam quibusdam temperantia aptus optio appono vel.",
+    "skills": [
+      "Java",
+      "JavaScript",
+      "Go"
+    ],
+    "company": "Schuppe LLC",
+    "location": "Abernathyville",
+    "salary": 87019
+  },
+  {
+    "title": "Investor Group Planner",
+    "description": "Voluptas deduco cresco admitto tricesimus molestiae amet aptus mollitia advoco.",
+    "skills": [
+      "Java",
+      "Ruby",
+      "C#"
+    ],
+    "company": "Reilly and Sons",
+    "location": "Lancehaven",
+    "salary": 54997
+  }
+]

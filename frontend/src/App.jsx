@@ -7,7 +7,7 @@ import PostJob from './pages/Post_Job';
 import Register from './pages/Register';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home'
-
+import Jobs from './pages/Jobs';
 
 function App() {
 
@@ -18,6 +18,7 @@ function App() {
       <Register />
       <Login />
       <PostJob />
+      <Jobs />
     </div>
   )
 }

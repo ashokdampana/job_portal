@@ -34,3 +34,11 @@ Job details API
 Show jobs in UI
 
 Commit : job listing and job details fetch
+
+
+DAY 5 — DELETE : Remove data
+
+Delete job (admin)
+Delete application (optional)
+
+Commit : delete job feature added

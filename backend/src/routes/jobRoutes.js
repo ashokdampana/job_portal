@@ -11,6 +11,9 @@ router.post('/', jobValid, async (req, res) => {
     if ( ! errors.isEmpty() ) {
         return res.status(400).json({errors: errors.array()})
     }
+
+    console.log('Creating job with data:', req.body);
+    // return;
     const newJob = new Job( req.body);
     await newJob.save();
     res.status(201).json({message: "Job posted successfully"})
@@ -30,5 +33,12 @@ router.get('/:id', async (req, res) => {
     if (!job) return res.status(404).json({ message: "Job not found" });
     res.status(200).json({ message: job });
 })
+
+router.delete('/:id', async (req, res) => {
+    const job = await Job.findByIdAndDelete(req.params.id);
+    if (!job) return res.status(404).json({ message: "Job not found" });
+    res.status(200).json({ message: "Job deleted successfully" });
+})
+
 
 export default router;

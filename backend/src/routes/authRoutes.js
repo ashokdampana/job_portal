@@ -28,7 +28,9 @@ router.post('/login', loginValid, (req, res) => {
     }
     const { email, password } = req.body;
     const checkUser = User.find({ email });
-    if (!checkUser ) return res.status(400).json({message: "User not found"});
+    if (!checkUser ) {
+        return res.status(400).json({message: "User not found"});
+    }
     res.status(200).json({message: "User login success"})
 })
 

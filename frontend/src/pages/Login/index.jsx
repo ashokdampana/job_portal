@@ -1,5 +1,5 @@
+import './index.css';
 import API from '../../services/api';
-import '../Login/index.css';
 import { useState } from "react"
 
 
@@ -8,17 +8,18 @@ function Login () {
     console.log('Login page');
     const [ email, setEmail ] = useState('')
     const [ password, setPassword ] = useState('')
+
     const [ result, setResult ] = useState('');
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const res = API.post('/api/auth/login', { email, password });
-            setResult(res.data.message || "Login successful!");
+            const res = await API.post('/api/auth/login', { email, password });
+            setResult(res.data.message);
         } catch (error) {
+            console.error("Login error:", error.response?.data || error.message); 
             setResult(error.response?.data?.message || "Login failed");
-        }
-        
+        } 
     }
 
     return (

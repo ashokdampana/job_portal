@@ -10,7 +10,7 @@ function PostJob () {
     const [ description, setDescription ] = useState('')
     const [ skills, setSkills ] = useState('')
     const [ location, setLocation ] = useState('')
-    const [ salary, setSalary ] = useState('')
+    const [ salary, setSalary ] = useState(0)
 
     const [ result, setResult ] = useState('')
 
@@ -19,13 +19,22 @@ function PostJob () {
         const jobData = {
             title, company, description, 
             skills: skills.split(',').map(s => s.trim()), 
-            location, salary
+            location, salary: Number(salary)
         }
+        console.log('Posting job:', jobData);
          try {
-            const res = API.post('/api/jobs',jobData);
-            setResult(res.data.message || "Job Posted successful!");
+            const res = await API.post('/api/jobs',jobData);
+            setResult(res.data.message);
+
+            setTitle(""); 
+            setCompany(""); 
+            setDescription(""); 
+            setSkills(""); 
+            setLocation(""); 
+            setSalary(0);
+
         } catch (error) {
-            setResult(error.response?.data?.message || "Job Posting failed");
+            setResult(error.response?.data?.message);
         }        
     }
 
@@ -47,7 +56,7 @@ function PostJob () {
                     required
                 />
                 <textarea
-                    placeholder="Description"
+                    placeholder="Description (10 char)"
                     type="text"
                     value={description}
                     onChange={e => setDescription(e.target.value)}

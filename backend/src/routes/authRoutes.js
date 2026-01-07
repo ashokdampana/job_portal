@@ -1,13 +1,11 @@
 
-import { loginValid, registerValid } from '../validations/authValidation.js';
-import { validationResult } from 'express-validator';
 import User from '../models/User.js';
 import express from 'express';
 import bcrypt from 'bcryptjs';
 
 const router = express.Router();
 
-router.post('/register', registerValid, async (req, res) => {
+router.post('/register', async (req, res) => {
     const errors = validationResult(req);
     if ( ! errors.isEmpty() ) {
         return res.status(400).json({errors: errors.array()})
@@ -21,7 +19,7 @@ router.post('/register', registerValid, async (req, res) => {
     res.status(201).json({message: "User created successfully", newUser});
 })
 
-router.post('/login', loginValid, (req, res) => {
+router.post('/login',  (req, res) => {
     const errors = validationResult(req);
     if ( ! errors.isEmpty() ) {
         return res.status(400).json({errors: errors.array()})

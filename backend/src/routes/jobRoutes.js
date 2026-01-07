@@ -1,20 +1,14 @@
 
-import { jobValid } from '../validations/jobValidation.js';
-import { validationResult } from 'express-validator';
 import Job from '../models/Job.js';
 import express from 'express';
 
 const router = express.Router();
 
-router.post('/', jobValid, async (req, res) => {
-    const errors = validationResult(req);
-    if ( ! errors.isEmpty() ) {
-        return res.status(400).json({errors: errors.array()})
-    }
+router.post('/',  async (req, res) => {
 
-    console.log('Creating job with data:', req.body);
-    // return;
-    const newJob = new Job( req.body);
+
+    const {title, company, description, skills, location, salary} = req.body;
+    const newJob = new Job( {title, company, description, skills, location, salary});
     await newJob.save();
     res.status(201).json({message: "Job posted successfully"})
 })
@@ -40,5 +34,11 @@ router.delete('/:id', async (req, res) => {
     res.status(200).json({ message: "Job deleted successfully" });
 })
 
+router.patch('/:id', async (req, res) => {
+    const updatedJob = await Job.findByIdAndUpdate(
+        req.params.id, { $set: req.body } , {new: true}
+    );
+    res.status(200).json({ updatedJob });
+})
 
 export default router;

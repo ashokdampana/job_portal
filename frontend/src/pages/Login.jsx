@@ -1,27 +1,31 @@
-import './index.css';
-import API from '../../services/api';
+// import './index.css';
+import API from '../api/api';
 import { useState } from "react"
+import { useAuth } from '../auth/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 
 function Login () {
+    const { login } = useAuth();
+    const navigate = useNavigate();
 
-    console.log('Login page');
     const [ email, setEmail ] = useState('')
     const [ password, setPassword ] = useState('')
-
     const [ result, setResult ] = useState('');
 
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
             const res = await API.post('/api/auth/login', { email, password });
-            setResult(res.data.message);
+            console.log(res.data.message)
+            login(res.data.token, res.data.role);
+            navigate('/dashboard');
+
         } catch (error) {
-            console.error("Login error:", error.response?.data || error.message); 
-            setResult(error.response?.data?.message || "Login failed");
+            setResult(error.response?.data?.message);
         } 
     }
-
+    
     return (
         <div className="login-form">
             <form onSubmit={ handleLogin }>

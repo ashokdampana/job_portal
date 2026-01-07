@@ -1,6 +1,6 @@
-import './index.css'
-import { useState } from "react"
-import API from '../../services/api.js';
+// import './index.css'
+import {  useState } from "react"
+import API from '../api/api.js';
 
 function Register () {
 
@@ -8,6 +8,7 @@ function Register () {
     const [ name, setName ] = useState('')
     const [ email, setEmail ] = useState('')
     const [ password, setPassword ] = useState('')
+    const [ role, setRole ] = useState('')
     const [ result, setResult ] = useState('');
 
     const handleRegister = async (e) => {
@@ -44,6 +45,15 @@ function Register () {
                     onChange={e => setPassword(e.target.value)}
                     required
                 />
+                <select 
+                    value={role}
+                    onChange={e => setRole(e.target.value)}
+                    required
+                >
+                    <option value="">Select Role</option>
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
                 <button type="submit">Register</button>
             </form>
             { result && <p>{ result }</p> }

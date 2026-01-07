@@ -1,6 +1,6 @@
-import './index.css'
+// import './index.css'
 import { useState } from "react"
-import API from '../../services/api.js';
+import API from '../api/api.js';
 
 function PostJob () {
 

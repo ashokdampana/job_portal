@@ -1,12 +1,11 @@
 
 import Job from '../models/Job.js';
 import express from 'express';
+import adminOnly from '../middleware/adminOnly.js'
 
 const router = express.Router();
 
-router.post('/',  async (req, res) => {
-
-
+router.post('/', adminOnly,  async (req, res) => {
     const {title, company, description, skills, location, salary} = req.body;
     const newJob = new Job( {title, company, description, skills, location, salary});
     await newJob.save();
@@ -19,7 +18,7 @@ router.get('/', async (req, res) => {
     if (jobs.length === 0) {
         return res.status(400).json({message: "No job Posts"});
     }
-    res.status(200).json({ message: jobs });
+    res.status(200).json({ jobs });
 })
 
 router.get('/:id', async (req, res) => {
@@ -28,13 +27,13 @@ router.get('/:id', async (req, res) => {
     res.status(200).json({ message: job });
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', adminOnly, async (req, res) => {
     const job = await Job.findByIdAndDelete(req.params.id);
     if (!job) return res.status(404).json({ message: "Job not found" });
     res.status(200).json({ message: "Job deleted successfully" });
 })
 
-router.patch('/:id', async (req, res) => {
+router.patch('/:id', adminOnly, async (req, res) => {
     const updatedJob = await Job.findByIdAndUpdate(
         req.params.id, { $set: req.body } , {new: true}
     );

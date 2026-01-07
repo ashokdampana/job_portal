@@ -1,6 +1,6 @@
-import './jobs.css'
+// import './jobs.css'
 import { useState, useEffect } from "react";
-import API from "../../services/api";
+import API from "../api/api";
 
 function Jobs() {
   const [jobs, setJobs] = useState([]);
@@ -9,7 +9,7 @@ function Jobs() {
 
   useEffect(() => {
     API.get("/api/jobs")
-      .then((res) => setJobs(res.data.message || []))
+      .then((res) => setJobs(res.data.jobs || []))
       .catch((err) => console.log(err));
   }, []);
 
@@ -32,7 +32,7 @@ function Jobs() {
 
   const handleUpdate = async (_id) => {
     try {
-        await API.put(`/api/jobs/${_id}`, formData);
+        await API.patch(`/api/jobs/${_id}`, formData);
       // update local state
       setJobs(jobs.map((job) => (job._id === _id ? { ...job, ...formData } : job)));
       setEditingJob(null); // close form
